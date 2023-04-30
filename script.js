@@ -66,14 +66,14 @@ deleteHistorique.addEventListener("click",()=>{
 
 
 function appuiBouton(valeur) {
-  console.log(valeur);
   if (valeur === 'C' || valeur === "Delete") {
     display.value = '';
     display.style.fontSize = `${initialFontSize}px`;
   }
   else if (valeur === '=') {
+    console.log(display.value)
     try {
-      if (display.value.includes("*") || display.value.includes("/") || display.value.includes("-") || display.value.includes("+")) {
+      if (display.value.includes("*") | display.value.includes("/") | display.value.includes("-") | display.value.includes("+")) {
         const calcul = document.createElement('span');
         const resultat = document.createElement('span');
         resultat.classList.add("resultat_historique")
@@ -94,6 +94,7 @@ function appuiBouton(valeur) {
     }
     display.value += valeur;
   }
+  historiqueVide()
   updateFontSize(); // Déplacer l'appel à updateFontSize() ici
 }
 
@@ -186,4 +187,31 @@ function updateFontSize() {
 
 updateFontSize();
 
+historiqueVide();
 
+function historiqueVide(){
+  if (historique_p.textContent.trim() === "" && historique_p.querySelectorAll('span').length == 0){
+    historique.classList.add("vide")
+  } else {
+    historique.classList.remove("vide")
+  }
+}
+
+
+// function updateFontSize() {
+//   const maxWidth = display.clientWidth;
+//   const maxHeight = display.clientHeight;
+//   const initialFontSize = parseFloat(getComputedStyle(display).getPropertyValue('font-size'));
+//   const textWidth = display.scrollWidth;
+//   const textHeight = display.scrollHeight;
+
+//   if (textWidth > maxWidth || textHeight > maxHeight) {
+//     const newFontSize = Math.min(initialFontSize * maxWidth / textWidth, initialFontSize * maxHeight / textHeight);
+//     display.style.fontSize = `${newFontSize}px`;
+//   } else {
+//     display.style.fontSize = 'inherit';
+//   }
+// }
+
+// // Mettre à jour la taille de la police au chargement initial
+// updateFontSize();
