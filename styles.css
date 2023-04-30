@@ -10,7 +10,7 @@
 }
 
 :root{
-  font-size: 62.5%;
+  font-size: 45%;
 }
 
 body {
@@ -36,6 +36,14 @@ button{
 
   width: 43rem;
 
+  border-radius: 3rem;
+}
+.calculatrice_contain
+{
+  position: relative;
+
+  width: 100%;
+
   padding: 2rem;
   padding-top: 1rem;
 
@@ -44,7 +52,11 @@ button{
   justify-content: center;
 
   background-color: #F0F0F3;
-  border-radius: 3rem;
+  border-radius: inherit;
+
+  z-index: 2;
+
+  box-shadow: 0 .5rem 2rem rgba(0, 0, 0, 0.03);
 }
 
 .bandeau{
@@ -132,8 +144,11 @@ button.egal{
 
 button:hover,
 button.active,
-#historique_btn
+#historique_btn,
+#historique_delete,
+#copie_btn
 {
+  cursor: pointer;
   filter: brightness(.95);
 }
 button.egal:hover, button.egal.active {
@@ -237,7 +252,7 @@ button:not(.active){
 
   transition: .5s;
 
-  z-index: -1;
+  z-index: 1;
 
   transform: scale(.9);
 }
@@ -247,11 +262,20 @@ button:not(.active){
   right: calc(-2rem - var(--width));
   box-shadow: 0 .5rem 5rem rgba(0, 0, 0, 0.05);
   transform: scale(1);
-  z-index: 1;
 }
 #historique.show-out
 {
   display: flex;
+}
+#historique.vide::after
+{
+  content: "(vide)";
+  font-size: 2.5rem;
+  opacity: .2;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 #historique_delete
@@ -259,6 +283,7 @@ button:not(.active){
   position: relative;
   
   background-image: url("./effacer_complet.svg");
+  background-size: 100%;
   background-position: center;
   background-repeat: no-repeat;
   width: 13rem;
@@ -266,6 +291,7 @@ button:not(.active){
   min-height: 3.4rem;
   border-radius: 2rem;
 }
+
 
 #historique_delete::after
 {
@@ -304,6 +330,7 @@ button:not(.active){
 }
 #historique p span
 {
+  position: relative;
   color: inherit;
   width: fit-content;
 
@@ -313,13 +340,12 @@ button:not(.active){
 }
 .resultat_historique
 {
-  position: relative;
   margin-left: 2rem;
   background: rgba(62, 201, 76, 0.1);
   border-radius: .5rem;
   padding: .2rem .4rem;
   font-weight: 800;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 .resultat_historique::after
 {
