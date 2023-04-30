@@ -84,7 +84,7 @@ button{
 }
 #historique_btn.return
 {
-  background-image: url("/historique_return.svg");
+  background-image: url("./historique_return.svg");
 }
 
 
@@ -161,7 +161,7 @@ button:not(.active){
 }
 #effacer{
   color: transparent;
-  background-image: url("/effacer.svg");
+  background-image: url("./effacer.svg");
   background-size: 40%;
   background-repeat: no-repeat;
   background-position: center;
@@ -187,7 +187,7 @@ button:not(.active){
   animation-delay: .1s;
 }
 #copied .icon{
-  background-image: url("/check.svg");
+  background-image: url("./check.svg");
   background-size: 100%;
   width: 3rem;
   height: 3rem;
