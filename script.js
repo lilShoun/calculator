@@ -13,22 +13,14 @@ const historique = document.getElementById("historique")
 const deleteHistorique = document.getElementById("historique_delete")
 const historique_btn = document.getElementById("historique_btn")
 
-copied.style.display = "none";
 
 copieBtn.addEventListener("click", () => {
   if (display.value != "") {
     display.select();
-    document.execCommand("copy"); 
-
-    copied.style.display = "flex";
+    document.execCommand("copy");
     copied.classList.add("copied-in");
     setTimeout(() => {
-      copied.classList.add("copied-out");
       copied.classList.remove("copied-in");
-      setTimeout(() => {
-          copied.classList.remove("copied-out");
-          copied.style.display = "none";
-      }, animationDuration * 1000);
     }, animationDuration * 1000 + 3000);
   }
 });
@@ -73,7 +65,8 @@ function appuiBouton(valeur) {
   else if (valeur === '=') {
     console.log(display.value)
     try {
-      if (display.value.includes("*") | display.value.includes("/") | display.value.includes("-") | display.value.includes("+")) {
+      if ((display.value.includes("*") || display.value.includes("/") || display.value.includes("-") || display.value.includes("+")) &&
+      !(display.value.startsWith("-") && !display.value.slice(1).includes("*") && !display.value.slice(1).includes("/") && !display.value.slice(1).includes("+"))) {
         const calcul = document.createElement('span');
         const resultat = document.createElement('span');
         resultat.classList.add("resultat_historique")
@@ -95,7 +88,7 @@ function appuiBouton(valeur) {
     display.value += valeur;
   }
   historiqueVide()
-  updateFontSize(); // Déplacer l'appel à updateFontSize() ici
+  updateFontSize();
 }
 
 boutons.forEach(bouton => {
