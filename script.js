@@ -4,7 +4,7 @@ const egal = document.querySelector('.egal');
 const copieBtn = document.getElementById('copie_btn');
 const copied = document.getElementById("copied")
 const animationDuration = parseFloat(
-    getComputedStyle(copied).getPropertyValue("animation-duration")
+    getComputedStyle(copied).getPropertyValue("transition-duration")
 );
 const touchesAutorisees = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.', '+', '-', '(', ')', '*', '/', 'Enter', 'Backspace', 'Delete'];
 const initialFontSize = parseFloat(getComputedStyle(display).getPropertyValue('font-size'));
@@ -24,6 +24,8 @@ copieBtn.addEventListener("click", () => {
     }, animationDuration * 1000 + 3000);
   }
 });
+
+console.log(animationDuration)
 
 historique_btn.addEventListener("click", () => {
   if (historique.classList.contains("show")){
@@ -54,6 +56,7 @@ historique_btn.addEventListener("keydown", function(event) {
 
 deleteHistorique.addEventListener("click",()=>{
   historique_p.textContent = ""
+  historiqueVide();
 })
 
 
