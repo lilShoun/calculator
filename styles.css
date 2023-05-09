@@ -448,6 +448,7 @@ button:not(.active){
   padding: .2rem .4rem;
   font-weight: 800;
   margin-bottom: 1.5rem;
+  width: calc(100% - 2rem)
 }
 .resultat_historique::after
 {
